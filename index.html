@@ -220,12 +220,19 @@
     white-space: nowrap;
     transition: all 0.2s;
     box-sizing: border-box;
+    background: transparent;
+    color: var(--crimson);
+    border: 1.5px solid var(--crimson);
+  }
+  .cta-secondary:hover {
+    background: var(--crimson);
+    color: white;
   }
   .cta-primary {
     background: var(--crimson); color: white;
     border: 1.5px solid var(--crimson);
   }
-  .cta-primary:hover { background: var(--crimson-dark); border-color: var(--crimson-dark); transform: translateY(-1px); }
+  .cta-primary:hover { background: transparent; color: var(--crimson); border-color: var(--crimson); transform: translateY(-1px); }
   .cta-secondary {
     background: transparent; color: white;
     border: 1.5px solid rgba(255,255,255,0.5);
@@ -238,9 +245,11 @@
   .contact-right .cta-secondary:hover { border-color: var(--crimson); color: var(--crimson); }
   .nav-cta-btn {
     color: white !important;
-    width: auto !important;
+    width: 210px !important;
+    padding: 0.9rem 1.75rem !important;
+    font-size: 0.78rem !important;
   }
-  .nav-cta-btn:hover { color: white !important; }
+  .nav-cta-btn:hover { color: var(--crimson) !important; background: transparent !important; border-color: var(--crimson) !important; }
 
   /* PHOTO PANEL */
   .hero-photo-panel {
@@ -405,58 +414,117 @@
     color: var(--dark); margin-bottom: 3rem; line-height: 1.2;
   }
 
-  /* VIDEO SECTION */
-  .video-section {
-    display: grid;
-    grid-template-columns: 1fr 1.6fr;
-    gap: 5rem;
-    align-items: center;
+  /* FOUNDERS GUIDE SECTION */
+  .founders-section {
+    background: #EAE6E1;
     padding: 5rem;
-  }
-  .video-section-desc {
-    font-size: 0.95rem;
-    line-height: 1.75;
-    color: var(--warm-gray);
-    font-weight: 300;
-    margin-top: 1rem;
-  }
-  .video-section-player {
     position: relative;
-  }
-  .video-embed-placeholder {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: var(--dark);
-    border-radius: 4px;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.18);
-    background-image: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(216,27,96,0.15) 0%, transparent 70%);
-    cursor: pointer;
   }
-  .video-embed-inner {
+  .founders-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  /* 9 triangles using clip-path — three shades from Meet Jennifer cards */
+  .ft { position: absolute; display: block; }
+  .ft1 { width: 340px; height: 340px; background: #F0EDEA; opacity: 0.7; clip-path: polygon(0 0, 100% 0, 0 100%); top: -60px; left: -60px; }
+  .ft2 { width: 280px; height: 280px; background: #DEDAD5; opacity: 0.5; clip-path: polygon(100% 0, 100% 100%, 0 100%); top: -20px; left: 180px; }
+  .ft3 { width: 200px; height: 200px; background: #E8E4DF; opacity: 0.6; clip-path: polygon(50% 0, 100% 100%, 0 100%); top: 40px; right: 380px; }
+  .ft4 { width: 320px; height: 320px; background: #F0EDEA; opacity: 0.5; clip-path: polygon(0 0, 100% 100%, 0 100%); bottom: -80px; right: -40px; }
+  .ft5 { width: 260px; height: 260px; background: #DEDAD5; opacity: 0.6; clip-path: polygon(0 0, 100% 0, 100% 100%); bottom: -40px; right: 200px; }
+  .ft6 { width: 180px; height: 180px; background: #E8E4DF; opacity: 0.5; clip-path: polygon(50% 0, 100% 100%, 0 100%); bottom: 60px; left: 300px; }
+  .ft7 { width: 150px; height: 150px; background: #F0EDEA; opacity: 0.6; clip-path: polygon(0 0, 100% 0, 50% 100%); top: 50%; left: 45%; }
+  .ft8 { width: 240px; height: 240px; background: #DEDAD5; opacity: 0.4; clip-path: polygon(100% 0, 100% 100%, 0 100%); top: 20px; right: -30px; }
+  .ft9 { width: 120px; height: 120px; background: #E8E4DF; opacity: 0.7; clip-path: polygon(0 0, 100% 0, 0 100%); bottom: 20px; left: 80px; }
+  .founders-inner {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.25rem;
+    text-align: center;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
   }
-  .play-btn-lg {
-    width: 80px; height: 80px;
-    border-radius: 50%;
+  .founders-ribbon {
+    display: inline-flex;
+    align-items: center;
     background: var(--crimson);
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 0 0 16px rgba(216,27,96,0.12), 0 0 0 32px rgba(216,27,96,0.06);
-    transition: transform 0.2s, background 0.2s;
+    padding: 0.7rem 1.75rem;
+    position: relative;
+    margin-bottom: 0.25rem;
   }
-  .play-btn-lg:hover { transform: scale(1.08); background: var(--crimson-dark); }
-  .play-btn-lg svg { margin-left: 5px; }
-  .video-embed-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
+  .founders-ribbon span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    position: relative;
+    z-index: 1;
+  }
+  .founders-ribbon-notch {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+  }
+  .founders-ribbon-notch-left {
+    left: -14px;
+    border-right: 14px solid var(--crimson);
+  }
+  .founders-ribbon-notch-right {
+    right: -14px;
+    border-left: 14px solid var(--crimson);
+  }
+  .founders-headline { margin: 0; }
+  .founders-subhead {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--mid);
+    font-weight: 300;
+    margin: 0;
+  }
+  .founders-cta {
+    margin-top: 0.5rem;
+    color: var(--crimson) !important;
+    border-color: var(--crimson) !important;
+    background: transparent !important;
+    width: auto !important;
+    padding: 0.9rem 1.75rem !important;
+    gap: 0.75rem !important;
+  }
+  .founders-cta svg {
+    width: 22px !important;
+    height: 22px !important;
+    flex-shrink: 0;
+  }
+  .founders-cta:hover {
+    background: var(--crimson) !important;
+    color: white !important;
+  }
+
+  .section-cta-row {
+    padding: 2rem 5rem 3rem;
+    background: var(--off-white);
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  #resume-dl-btn {
+    color: var(--crimson) !important;
+    border-color: var(--crimson) !important;
+    background: transparent !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  #resume-dl-btn:hover {
+    background: var(--crimson) !important;
+    color: white !important;
   }
 
   /* EXPERIENCE */
@@ -610,20 +678,22 @@
     justify-content: center;
   }
   .contact-action-btn {
-    display: inline-flex; align-items: center; gap: 0.6rem;
-    padding: 1rem 2rem;
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    width: 210px;
+    padding: 0.9rem 1.75rem;
     font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
     font-weight: 500; text-decoration: none;
     border-radius: 2px;
-    border: 1.5px solid rgba(255,255,255,0.25);
-    color: white;
+    border: 1.5px solid var(--crimson);
+    color: var(--crimson);
     background: transparent;
     transition: all 0.2s;
     white-space: nowrap;
+    box-sizing: border-box;
   }
   .contact-action-btn:hover {
     background: var(--crimson);
-    border-color: var(--crimson);
+    color: white;
     transform: translateY(-2px);
   }
 
@@ -659,7 +729,6 @@
     nav { padding: 1rem 1.5rem; }
     .nav-links a:not(.nav-cta-btn) { display: none; }
     .nav-logo { font-size: 1.1rem; letter-spacing: 0.08em; }
-    .nav-cta-btn { font-size: 0.72rem !important; padding: 0.6rem 1rem !important; }
 
     /* HERO */
     .hero { padding: 7rem 2rem 4rem; min-height: auto; }
@@ -675,10 +744,32 @@
     .about-photo-col { justify-content: center; }
     .about-cards { grid-template-columns: 1fr; gap: 1rem; }
 
-    /* VIDEO */
-    .video-section { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 2rem; }
+    /* FOUNDERS */
+    .founders-section { padding: 3rem 2rem; }
+    .founders-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .founders-card { width: 100%; }
+    .section-cta-row { padding: 0 2rem 2.5rem; }
 
-    /* EXPERIENCE */
+    .section-cta-row {
+    padding: 2rem 5rem 3rem;
+    background: var(--off-white);
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  #resume-dl-btn {
+    color: var(--crimson) !important;
+    border-color: var(--crimson) !important;
+    background: transparent !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  #resume-dl-btn:hover {
+    background: var(--crimson) !important;
+    color: white !important;
+  }
+
+  /* EXPERIENCE */
     #experience { padding: 3rem 2rem; }
     .exp-header { flex-direction: column; gap: 0.25rem; }
     .exp-dates { align-self: flex-start; }
@@ -707,7 +798,6 @@
     nav { padding: 0.85rem 1.25rem; }
     .nav-links { gap: 0.5rem; }
     .nav-logo { font-size: 0.9rem; letter-spacing: 0.06em; }
-    .nav-cta-btn { padding: 0.5rem 0.85rem !important; font-size: 0.68rem !important; }
 
     /* HERO */
     .hero { padding: 5.5rem 1.5rem 3rem; }
@@ -749,7 +839,26 @@
     .play-btn-lg { width: 60px; height: 60px; }
     .play-btn-lg svg { width: 22px; height: 22px; }
 
-    /* EXPERIENCE */
+    .section-cta-row {
+    padding: 2rem 5rem 3rem;
+    background: var(--off-white);
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  #resume-dl-btn {
+    color: var(--crimson) !important;
+    border-color: var(--crimson) !important;
+    background: transparent !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  #resume-dl-btn:hover {
+    background: var(--crimson) !important;
+    color: white !important;
+  }
+
+  /* EXPERIENCE */
     #experience { padding: 2.5rem 1.25rem; }
     #experience h2 { font-size: clamp(1.5rem, 6vw, 2rem); }
     .exp-card { padding: 1.5rem 1.25rem; }
@@ -767,6 +876,12 @@
     .skill-item { min-height: 80px; padding: 1rem 1.25rem; }
     .skill-title { font-size: 0.72rem; letter-spacing: 0.04em; }
     .skill-desc { font-size: 0.78rem; padding: 1rem 1.25rem; }
+
+    /* FOUNDERS */
+    .founders-section { padding: 2.5rem 1.25rem; }
+    .founders-inner { gap: 1.5rem; }
+    .founders-card-title { font-size: 1.2rem; }
+    .section-cta-row { padding: 0 1.25rem 2rem; }
 
     /* CONTACT */
     #contact { padding: 3rem 1.25rem; }
@@ -795,7 +910,7 @@
   <div class="nav-logo">Jennifer <span class="nav-logo-pink">Prishtina</span></div>
   <div class="nav-links">
     <a href="#about">Philosophy</a>
-    <a href="#video">Video</a>
+    <a href="#video">GTM Playbook</a>
     <a href="#experience">Experience</a>
     <a href="#skills">Skills</a>
     <a href="#contact" class="cta-primary nav-cta-btn"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Let's Connect</a>
@@ -812,10 +927,10 @@
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-content fade-in">
-    <span class="hero-tag">Available for new opportunities · Austin, TX</span>
+    <span class="hero-tag">Open to new marketing leadership opportunities · Austin, TX</span>
     <h1>Your 0→1 Marketing Isn't a Plan. It's an <span>Experiment.</span></h1>
     <p class="hero-subhead">Hi, I'm Jennifer Prishtina. I help early-stage teams find what works — think small bets, fast learning loops, and repeatable GTM plays.</p>
-    <div class="hero-actions"><a href="#contact" class="cta-primary"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Let's Connect</a><a href="https://www.canva.com/design/DAFqaEQHTOk/TmTVNopvkWaxDwM_ttJi3w/view?utm_content=DAFqaEQHTOk" target="_blank" class="cta-secondary"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Founders' Guide</a></div>
+    <div class="hero-actions"><a href="#contact" class="cta-primary"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Let's Connect</a></div>
   </div>
 </section>
 <div class="divider-line"></div>
@@ -881,21 +996,30 @@
 <div class="divider-line"></div>
 
 <!-- VIDEO -->
-<section id="video" class="video-section">
-  <div class="video-section-text">
-    <p class="section-label">My Approach</p>
-    <h2>What the Resume<br>Doesn't Tell You</h2>
-    <p class="video-section-desc">How Gartner and innovation have changed the way I think about 0→1 marketing.</p>
+<section id="video" class="founders-section">
+  <div class="founders-bg">
+    <span class="ft ft1"></span>
+    <span class="ft ft2"></span>
+    <span class="ft ft3"></span>
+    <span class="ft ft4"></span>
+    <span class="ft ft5"></span>
+    <span class="ft ft6"></span>
+    <span class="ft ft7"></span>
+    <span class="ft ft8"></span>
+    <span class="ft ft9"></span>
   </div>
-  <div class="video-section-player">
-    <div class="video-embed-placeholder">
-      <div class="video-embed-inner">
-        <div class="play-btn-lg">
-          <svg width="32" height="32" fill="white" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-        </div>
-        <p class="video-embed-label">Add your video URL here</p>
-      </div>
+  <div class="founders-inner">
+    <div class="founders-ribbon">
+      <div class="founders-ribbon-notch founders-ribbon-notch-left"></div>
+      <span>A Founder's Guide to Marketing</span>
+      <div class="founders-ribbon-notch founders-ribbon-notch-right"></div>
     </div>
+    <h2 class="founders-headline">My 0→1 GTM Playbook</h2>
+    <p class="founders-subhead">My resume shows what I've done. This shows how I do it. Inside: three GTM strategies for 0→1 founders—built for speed, clarity, and repeatable traction.</p>
+    <a href="https://www.canva.com/design/DAHCKthx3js/xRmP6VQ1gX2l2gjdC4f_hA/view" target="_blank" class="cta-secondary founders-cta">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Read the Guide
+    </a>
   </div>
 </section>
 <div class="divider-line"></div>
@@ -918,7 +1042,7 @@
         <li>Builds GTM function from 0 to 1 with a healthcare beachhead focused on hospital systems — owning ICP, segmentation, persona narratives, priority use cases, competitive framing, and positioning.</li>
         <li>Leads category creation efforts, partnering with Gartner to define market narrative and category language; translates into consistent executive messaging for C-suite buyers.</li>
         <li>Runs 6-week GTM sprints to surface market signals and PMF vectors — testing segments, channels, messaging, and offers while maintaining a structured learning loop.</li>
-        <li>Builds and maintains the sales enablement system: website narrative, one-pagers, battle cards, master sales deck, use-case + proof-point library.</li>
+        <li>Built and maintains the sales enablement hub using Claude.ai — website narrative, one-pagers, battle cards, master sales deck, and a use-case + proof-point library.</li>
       </ul>
     </div>
 
@@ -934,6 +1058,7 @@
         <li>Built the marketing function from 0 to 1, helping grow revenue to $5M+ ARR in less than 2 years by establishing core GTM foundations — segmentation, positioning, messaging, and ICPs — and a sales enablement engine.</li>
         <li>Developed and executed ABM for the U.S. Air Force, creating tailored comms and education campaigns that helped expand the account across multiple Air Force groups.</li>
         <li>Led a full brand overhaul: website redesign, hired and managed a design firm; defined brand personality and built the voice, copy, and content system.</li>
+        <li>Developed customer testimonials and case studies that translated operational outcomes into buyer-relevant proof points, used across sales decks, one-pagers, and the website.</li>
         <li>Enabled sales, customer success, and fundraising efforts; partnered with leadership on investor messaging and pitch decks.</li>
       </ul>
     </div>
@@ -1016,6 +1141,11 @@
     </div>
 
   </div>
+
+  <div class="section-cta-row">
+    <a href="#contact" class="cta-primary"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Let's Connect</a>
+    <a id="resume-dl-btn" href="#" class="cta-secondary" style="opacity:1;transform:none;color:var(--crimson);border-color:var(--crimson);background:transparent;display:inline-flex;align-items:center;justify-content:center;text-align:center;"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Resume</a>
+  </div>
 </section>
 <div class="divider-line"></div>
 
@@ -1063,7 +1193,7 @@
       </div>
       <div class="skill-item">
         <div class="skill-title">Data-Driven Storytelling</div>
-        <div class="skill-desc">Turns survey results and company data into whitepapers, ebooks, and blog posts that build authority and drive top-of-funnel demand.</div>
+        <div class="skill-desc">Turns data and customer stories into ebooks, whitepapers, and case studies that build authority and drive top-of-funnel demand.</div>
       </div>
       <div class="skill-item">
         <div class="skill-title">Analyst Relations</div>
@@ -1090,11 +1220,11 @@
       </div>
       <div class="skill-item">
         <div class="skill-title">Team Management</div>
-        <div class="skill-desc">Managed PR and design agencies end-to-end at multiple startups — briefing, strategy, quality control, and output ownership.</div>
+        <div class="skill-desc">Managed direct reports and agencies end-to-end — briefing, strategy, quality control, and output ownership across multiple startups.</div>
       </div>
       <div class="skill-item">
         <div class="skill-title">AI & Automation</div>
-        <div class="skill-desc">Applies AI tools to accelerate research, content, positioning, and campaign iteration — compressing cycle time without sacrificing quality.</div>
+        <div class="skill-desc">Uses ChatGPT, Claude.ai, AirOps, and more to accelerate research, content, and campaigns — increasing speed without sacrificing quality.</div>
       </div>
       <div class="skill-item">
         <div class="skill-title">Marketing Analytics</div>
@@ -1115,13 +1245,9 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
-    <p class="contact-eyebrow">Open to new opportunities · Austin, TX</p>
-    <h2 class="contact-headline">Let's Talk.</h2>
+    <p class="contact-eyebrow">Open to new marketing leadership opportunities · Austin, TX</p>
+    <h2 class="contact-headline">Let's Connect.</h2>
     <div class="contact-actions">
-      <a id="resume-dl-btn" href="#" class="contact-action-btn">
-        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Resume
-      </a>
       <a href="https://linkedin.com/in/jenniferprishtina" target="_blank" class="contact-action-btn">
         <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         LinkedIn
@@ -1167,6 +1293,7 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.exp-card, .skill-item').forEach(function(el) {
+    if (el.id === 'resume-dl-btn') return;
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
